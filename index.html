@@ -4,46 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="general-style.css">
+    <link rel="stylesheet" href="upper-row-style.css">
+    <link rel="stylesheet" href="pack-style.css">
+    <link rel="stylesheet" href="table-style.css">
+    <link rel="stylesheet" href="card-style.css">
+
     <title>SOLITAIRE (◣_◢)(◣_◢)(◣_◢)(◣_◢)</title>
 </head>
 <body>
     <div class="container">
         <div id="upper-row">
-            <div class="card-placeholder center-text">
-                <p class="card-text">♥</p> 
+            <div class="ace-placeholder center-text">
+                <div class='ace-character-text'>
+                    <p class="card-text">♥</p> 
+                </div>
             </div>
-            <div class="card-placeholder center-text">
-                <p class="card-text">♣</p> 
+            <div class="ace-placeholder center-text">
+                <div class='ace-character-text'>
+                    <p class="card-text">♣</p> 
+                </div>
             </div>
-            <div class="card-placeholder center-text">
-                <p class="card-text">♦</p> 
+            <div class="ace-placeholder center-text">
+                <div class='ace-character-text'>
+                    <p class="card-text">♦</p> 
+                </div>
             </div>
-            <div class="card-placeholder center-text">
-                <p class="card-text">♠</p> 
+            <div class="ace-placeholder center-text">
+                <div class='ace-character-text'>
+                    <p class="card-text">♠</p>
+                </div> 
             </div>
 
             <div class="card-placeholder invisible"></div>
 
-            <div class="card-placeholder">
-                <p class="card-text">X</p> 
+            <div class="pack-placeholder card-pack" id="discard-pack">
+                <div class="card-placeholder-spot"></div>
             </div>
-            <div class="card-placeholder">
-                <p class="card-text">O</p> 
+            <div class="pack-placeholder card-pack" id="card-pack">
+                <div class="card-placeholder-spot"></div>
             </div>
         </div>
 
         <div id="table">
             <div class="card-row">
                 <div class="card-spot"></div>
-
-                <div class="draggable-card black-text back">
-                    <p class="card-text">5♠</p> 
-                </div>
-
-                <div class="draggable-card red-text back">
-                    <p class="card-text">4♥</p> 
-                </div>
             </div>
             <div class="card-row">
                 <div class="card-spot"></div>

@@ -1,0 +1,35 @@
+#upper-row {
+    width: 100%;
+    height: calc( var( --card-height ) + 20px );
+
+    display: flex;
+}
+
+.ace-placeholder {   
+    display: grid;
+    grid-template: 1fr / 1fr;
+}
+
+.ace-placeholder > * {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+}
+
+.ace-placeholder > .draggable-card {
+    margin: 10px !important;
+}
+
+.ace-character-text {
+    margin: 10px;
+
+    border: #535353 2px solid;
+    border-radius: 10px;
+
+    color: #3e3e3e;
+
+    width: calc( var( --card-width ) - 24.5px );
+    height: var( --card-height );
+
+    display: flex;
+    align-items: center;
+}

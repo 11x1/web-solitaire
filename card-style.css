@@ -1,0 +1,38 @@
+.draggable-card {
+    border: #060606 2px solid;
+    border-radius: 10px;
+
+    background-color: #5e5050;
+
+    margin-left: 10px;
+    color: #3e3e3e;
+
+    width: calc( var( --card-width ) - 25px );
+    height: var( --card-height );
+
+    display: flex;
+    align-items: center;
+}
+
+.red-text {
+    color: #e84949;
+}
+
+.black-text {
+    color: #000;
+}
+
+.small-text {
+    font-size: calc( var( --card-width ) / 5 ) !important   ;
+    padding-bottom: calc( var( --card-height ) / 1.2 );;
+    padding-right: calc( var( --card-width )/2 - var( --card-width )/10 + 0px );
+}
+
+.card-text {
+    font-size: calc( var( --card-width ) / 2 );
+    margin: auto;
+}
+
+.back {
+    color: #0000 !important;
+}
