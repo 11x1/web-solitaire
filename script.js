@@ -12,9 +12,14 @@
     //  fix card selecting from discard-pack
     //  only let kings be moved to empty rows
     //  do card pack
+
+    [ 18.09 ]
+    // game start/end
     //* irritaing upper row items not aligning with table items
     //* card text overflow when in discard pack ( mb fixable when setting the cards under the top one class to small-text?)
-    //* game start/end
+    //* fix game start/end stacks ( sometimes they get very funky :[ )
+    //* point system
+    //* game end screen
 */
 
 const colors = {
@@ -137,30 +142,82 @@ Object.entries( card_characters ).forEach( ( [ character, _] ) => {
     for ( let i = 0; i < card_order.length; i++ ) {
         let letter = card_order[ i ]
 
-        full_pack.push( letter + character )
+        const card = document.createElement( 'div' )
+        const color_class = character == '♠' || character == '♣' ? 'black-text' : 'red-text'
+        card.className = 'draggable-card ' + color_class + ' back' 
+        
+        const text_node = document.createElement( 'p' )
+        text_node.className = 'card-text'
+        text_node.innerText = letter + character
+        card.appendChild( text_node )
+
+        full_pack.push( card )
     }
 } )
 
-const test_setup_pack = ( ) => {
-    for ( let entry of full_pack ) {
-        const card = document.createElement( 'div' )
 
-        const characters = entry.split( '' )
-        const character = characters[ characters.length - 1 ]
-        const color_class = character == '♠' || character == '♣' ? 'black-text' : 'red-text'
+const row_bounding_boxes = [ ];
+const rows = document.getElementsByClassName( 'card-row' )
 
-        card.className = 'draggable-card ' + color_class + ' back' 
+for ( let row of rows ) {
+    let bounds = row.getBoundingClientRect( )
+    update_card_offsets_in_row( row )
+    row_bounding_boxes.push( { 
+        pos: new vec2_t( bounds.x, bounds.y ), 
+        size: new vec2_t( bounds.width, bounds.height ),
+        element: row
+    } )
+}
 
-        const text_node = document.createElement( 'p' )
-        text_node.innerText = entry
-        text_node.className = 'card-text'
+const update_rows = ( rows ) => {
+    for ( i = 0; i < rows.length; i++ ) {
+        const fresh_data = rows[ i ].getBoundingClientRect( )
+        const cached_data = row_bounding_boxes[ i ]
 
-        card.appendChild( text_node )
-        remaining_pack.appendChild( card )
+        cached_data.pos.set( fresh_data.x, fresh_data.y )
+        cached_data.size.set( fresh_data.width, fresh_data.height )
     }
 }
 
-test_setup_pack( )
+// test_setup_pack( )
+const test_setup_game = ( ) => {
+    const stacks = [ ];
+    for ( let row of rows ) {
+        stacks.push( row )
+    }
+
+    stacks.push( remaining_pack )
+    console.log( stacks )
+
+    const valid_rows = Array.from( { length: stacks.length }, ( _, i ) => i + 2 )
+    valid_rows[ valid_rows.length - 1 ] = 100
+
+    const cards_for_drawing_pack_not_randomized = [ ]
+
+    for ( let card of full_pack ) {
+        let index = Math.floor( Math.random( ) * stacks.length )
+        let row = stacks[ index ]
+
+        if ( row.children.length >= valid_rows[ index ] ) {
+            cards_for_drawing_pack_not_randomized.push( card )
+            continue
+        }
+
+        row.appendChild( card )
+    }
+
+    const randomized_drawing_card_pack = [ ]
+    while ( cards_for_drawing_pack_not_randomized.length > 0 ) {
+        let index = Math.floor( Math.random( ) * cards_for_drawing_pack_not_randomized.length )
+        randomized_drawing_card_pack.push( cards_for_drawing_pack_not_randomized[ index ] )
+        cards_for_drawing_pack_not_randomized.splice( index, 1 )
+    }
+
+    randomized_drawing_card_pack.map( ( card ) => remaining_pack.appendChild( card ) )
+}
+
+test_setup_game( )
+Array.from( rows ).map( ( row ) => update_card_offsets_in_row( row ) )
 
 
 let cards = document.getElementsByClassName( 'draggable-card' )
@@ -245,29 +302,6 @@ for ( let card of cards ) {
         
         log_debug( 'update', `selected card to drag (${ elements[ 0 ].children[ 0 ].innerText })`, colors.green )
     } )
-}
-
-const row_bounding_boxes = [ ];
-const rows = document.getElementsByClassName( 'card-row' )
-
-for ( let row of rows ) {
-    let bounds = row.getBoundingClientRect( )
-    update_card_offsets_in_row( row )
-    row_bounding_boxes.push( { 
-        pos: new vec2_t( bounds.x, bounds.y ), 
-        size: new vec2_t( bounds.width, bounds.height ),
-        element: row
-    } )
-}
-
-const update_rows = ( rows ) => {
-    for ( i = 0; i < rows.length; i++ ) {
-        const fresh_data = rows[ i ].getBoundingClientRect( )
-        const cached_data = row_bounding_boxes[ i ]
-
-        cached_data.pos.set( fresh_data.x, fresh_data.y )
-        cached_data.size.set( fresh_data.width, fresh_data.height )
-    }
 }
 
 const ace_placeholders = document.getElementsByClassName( 'ace-placeholder' )
