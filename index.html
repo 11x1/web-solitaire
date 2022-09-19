@@ -13,63 +13,66 @@
     <title>SOLITAIRE (◣_◢)(◣_◢)(◣_◢)(◣_◢)</title>
 </head>
 <body>
-    <div class="container">
-        <div id="upper-row">
-            <div class="ace-placeholder center-text">
-                <div class='ace-character-text'>
-                    <p class="card-text">♥</p> 
+    <div class="playing-window">
+        <div class="container">
+            <div id="upper-row">
+                <div class="ace-placeholder center-text">
+                    <div class='ace-character-text'>
+                        <p class="card-text">♥</p> 
+                    </div>
+                </div>
+                <div class="ace-placeholder center-text">
+                    <div class='ace-character-text'>
+                        <p class="card-text">♣</p> 
+                    </div>
+                </div>
+                <div class="ace-placeholder center-text">
+                    <div class='ace-character-text'>
+                        <p class="card-text">♦</p> 
+                    </div>
+                </div>
+                <div class="ace-placeholder center-text">
+                    <div class='ace-character-text'>
+                        <p class="card-text">♠</p>
+                    </div> 
+                </div>
+
+                <div class="card-placeholder invisible"></div>
+
+                <div class="pack-placeholder card-pack" id="discard-pack">
+                    <div class="card-placeholder-spot"></div>
+                </div>
+                <div class="pack-placeholder card-pack" id="card-pack">
+                    <div class="card-placeholder-spot"></div>
                 </div>
             </div>
-            <div class="ace-placeholder center-text">
-                <div class='ace-character-text'>
-                    <p class="card-text">♣</p> 
+
+            <div id="table">
+                <div class="card-row">
+                    <div class="card-spot"></div>
                 </div>
-            </div>
-            <div class="ace-placeholder center-text">
-                <div class='ace-character-text'>
-                    <p class="card-text">♦</p> 
+                <div class="card-row">
+                    <div class="card-spot"></div>
                 </div>
-            </div>
-            <div class="ace-placeholder center-text">
-                <div class='ace-character-text'>
-                    <p class="card-text">♠</p>
-                </div> 
-            </div>
-
-            <div class="card-placeholder invisible"></div>
-
-            <div class="pack-placeholder card-pack" id="discard-pack">
-                <div class="card-placeholder-spot"></div>
-            </div>
-            <div class="pack-placeholder card-pack" id="card-pack">
-                <div class="card-placeholder-spot"></div>
-            </div>
-        </div>
-
-        <div id="table">
-            <div class="card-row">
-                <div class="card-spot"></div>
-            </div>
-            <div class="card-row">
-                <div class="card-spot"></div>
-            </div>
-            <div class="card-row">
-                <div class="card-spot"></div>
-            </div>
-            <div class="card-row">
-                <div class="card-spot"></div>
-            </div>
-            <div class="card-row">
-                <div class="card-spot"></div>
-            </div>
-            <div class="card-row">
-                <div class="card-spot"></div>
-            </div>
-            <div class="card-row">
-                <div class="card-spot"></div>
+                <div class="card-row">
+                    <div class="card-spot"></div>
+                </div>
+                <div class="card-row">
+                    <div class="card-spot"></div>
+                </div>
+                <div class="card-row">
+                    <div class="card-spot"></div>
+                </div>
+                <div class="card-row">
+                    <div class="card-spot"></div>
+                </div>
+                <div class="card-row">
+                    <div class="card-spot"></div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="update-css-vars.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>

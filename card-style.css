@@ -29,8 +29,14 @@
 }
 
 .card-text {
-    font-size: calc( var( --card-width ) / 2 );
+    font-size: calc( var( --card-width ) / 2.5 );
     margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .card-text {
+        font-size: calc( var( --card-width ) / 5 ) !important   ;
+    }
 }
 
 .back {

@@ -8,6 +8,9 @@
 .ace-placeholder {   
     display: grid;
     grid-template: 1fr / 1fr;
+    width: calc( 600px / 7 );
+    height: calc( 100% );
+
 }
 
 .ace-placeholder > * {
@@ -26,9 +29,6 @@
     border-radius: 10px;
 
     color: #3e3e3e;
-
-    width: calc( var( --card-width ) - 24.5px );
-    height: var( --card-height );
 
     display: flex;
     align-items: center;

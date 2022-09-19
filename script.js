@@ -15,6 +15,10 @@
 
     [ 18.09 ]
     // game start/end
+
+    [ 19.09 ]
+    // text weird sizing on mobile
+    // cards too big on big screens
     //* irritaing upper row items not aligning with table items
     //* card text overflow when in discard pack ( mb fixable when setting the cards under the top one class to small-text?)
     //* fix game start/end stacks ( sometimes they get very funky :[ )
